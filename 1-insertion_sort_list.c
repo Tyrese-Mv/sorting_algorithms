@@ -9,43 +9,43 @@ void insertion_sort_list(listint_t **list)
 
 	if (*list == NULL || (*list)->next == NULL)
 		return;
-	while (current) {
-        if (current->n >= prev->n) {
-            prev = current;
-            current = current->next;
-        } else {
-            temp = fHead;
-
-            if (current->n < temp->n) 
+	while (current)
+	{
+		if (current->n >= prev->n)
+		{
+			prev = current;
+			current = current->next;
+		}
+		else
+		{
+			temp = fHead;
+			if (current->n < temp->n)
 			{
-                prev->next = current->next;
-                if (current->next != NULL)
-                    current->next->prev = prev;
-                current->next = fHead;
-                fHead->prev = current;
-                current->prev = NULL;
-                fHead = current;
-                *list = fHead;
-				
-            } 
-			else 
+				prev->next = current->next;
+				if (current->next != NULL)
+					current->next->prev = prev;
+				current->next = fHead;
+				fHead->prev = current;
+				current->prev = NULL;
+				fHead = current;
+				*list = fHead;
+			}
+			else
 			{
-                while (temp->next != NULL && current->n > temp->next->n)
-                    temp = temp->next;
-
-                prev->next = current->next;
-                if (current->next != NULL) 
-                    current->next->prev = prev;
-                current->next = temp->next;
-                if (temp->next != NULL)
-                    temp->next->prev = current;
-                temp->next = current;
-                current->prev = temp;
-				
-            }
+				while (temp->next != NULL && current->n > temp->next->n)
+					temp = temp->next;
+				prev->next = current->next;
+				if (current->next != NULL)
+					current->next->prev = prev;
+				current->next = temp->next;
+				if (temp->next != NULL)
+					temp->next->prev = current;
+				temp->next = current;
+				current->prev = temp;
+			}
 			print_list(*list);
-            current = prev->next;
-        }
-    }
-    *list = fHead;
+			current = prev->next;
+		}
+	}
+	*list = fHead;
 }
